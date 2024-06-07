@@ -2,7 +2,6 @@ package com.example.hotelapp
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
-import com.example.hotelapp.databinding.ActivityMainBinding
 
 class MainActivity : ComponentActivity() {
     private var _binding: ActivityMainBinding? = null
