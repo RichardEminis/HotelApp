@@ -1,11 +1,12 @@
 package com.example.cleverpumpkinhotel
 
+import android.content.Context
 import retrofit2.Retrofit
 import kotlinx.serialization.json.Json
 import com.jakewharton.retrofit2.converter.kotlinx.serialization.asConverterFactory
 import okhttp3.MediaType.Companion.toMediaType
 
-object RetrofitInstance {
+class HotelRepository(context: Context) {
     private val contentType = "application/json".toMediaType()
     private val retrofit by lazy {
         Retrofit.Builder()
@@ -14,7 +15,5 @@ object RetrofitInstance {
             .build()
     }
 
-    val api: ApiService by lazy {
-        retrofit.create(ApiService::class.java)
-    }
+    private val service: ApiService = retrofit.create(ApiService::class.java)
 }

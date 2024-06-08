@@ -19,7 +19,7 @@ class MainActivity : AppCompatActivity() {
 
         supportFragmentManager.commit {
             setReorderingAllowed(true)
-            add<HotelsFragment>(R.id.mainContainer)
+            add<HotelsListFragment>(R.id.mainContainer)
             addToBackStack(null)
         }
     }
