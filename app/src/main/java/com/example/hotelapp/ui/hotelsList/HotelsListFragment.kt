@@ -6,10 +6,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.RecyclerView
 import com.example.hotelapp.R
 
 class HotelsListFragment : Fragment() {
 
+    private var recyclerView: RecyclerView? = null
     private lateinit var viewModel: HotelsListViewModel
     private lateinit var adapter: HotelsListAdapter
 
@@ -23,6 +25,11 @@ class HotelsListFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        viewModel = ViewModelProvider(this)[HotelsListViewModel::class.java]
+
+        viewModel.hotelsList.observe(viewLifecycleOwner) { hotelsListState ->
+            adapter.dataSet = hotelsListState.hotels
+        }
     }
+
+
 }

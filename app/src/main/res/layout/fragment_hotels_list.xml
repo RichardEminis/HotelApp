@@ -8,13 +8,31 @@
     android:background="@color/white"
     tools:context=".ui.MainActivity">
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rvProducts"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginHorizontal="16dp"
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        tools:itemCount="8"
-        tools:listitem="@layout/item_product" />
+        android:orientation="vertical">
+
+        <Spinner
+            android:id="@+id/spinnerFilter"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/main_indent"
+            android:layout_marginTop="@dimen/main_indent"
+            android:layout_marginEnd="@dimen/main_indent"
+            android:entries="@array/filter_options"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvHotels"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginHorizontal="@dimen/main_indent"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            tools:itemCount="8"
+            tools:listitem="@layout/item_hotel" />
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

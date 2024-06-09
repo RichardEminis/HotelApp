@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">HotelApp</string>
+    <string name="hotel_image_description">изображение отеля</string>
+    <string-array name="filter_options">
+        <item>По расстоянию от центра</item>
+        <item>По количеству свободных номеров</item>
+    </string-array>
 </resources>

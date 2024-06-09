@@ -2,7 +2,7 @@
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/cvRecipeItem"
+    android:id="@+id/cvHotelItem"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginHorizontal="8dp"
@@ -18,19 +18,33 @@
         android:orientation="vertical">
 
         <ImageView
-            android:id="@+id/ivRecipeImage"
+            android:id="@+id/ivHotelImage"
             android:layout_width="match_parent"
             android:layout_height="130dp"
+            android:contentDescription="@string/hotel_image_description"
             android:scaleType="centerCrop"
             tools:srcCompat="@drawable/ic_launcher_background" />
 
         <TextView
-            android:id="@+id/tvRecipeName"
+            android:id="@+id/tvHotelName"
             style="@style/RecipeStyle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            tools:text="Временный текст" />
+            tools:text="HOTEL NAME" />
 
+        <TextView
+            android:id="@+id/tvHotelDistance"
+            style="@style/RecipePortion"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:text="Distance: NULL" />
+
+        <TextView
+            android:id="@+id/tvHotelAvailableRooms"
+            style="@style/RecipePortion"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:text="Available Rooms: NULL" />
     </LinearLayout>
 
 </androidx.cardview.widget.CardView>

@@ -1,7 +1,7 @@
 package com.example.cleverpumpkinhotel.model
 
 data class Hotel(
-    val id: String,
+    val id: Int,
     val name: String,
     val distance: Float,
     val availableRooms: Int,
