@@ -1,6 +1,7 @@
-package com.example.cleverpumpkinhotel
+package com.example.hotelapp.repository
 
 import android.content.Context
+import com.example.hotelapp.network.ApiService
 import retrofit2.Retrofit
 import kotlinx.serialization.json.Json
 import com.jakewharton.retrofit2.converter.kotlinx.serialization.asConverterFactory

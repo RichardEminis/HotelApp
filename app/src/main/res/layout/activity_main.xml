@@ -5,11 +5,11 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/teal_200"
-    tools:context="MainActivity">
+    tools:context=".ui.MainActivity">
 
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/mainContainer"
-        android:name="com.example.hotelapp.HotelsListFragment"
+        android:name="com.example.hotelapp.ui.hotelsList.HotelsListFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 

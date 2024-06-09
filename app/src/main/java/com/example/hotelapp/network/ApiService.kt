@@ -1,4 +1,4 @@
-package com.example.cleverpumpkinhotel
+package com.example.hotelapp.network
 
 import com.example.cleverpumpkinhotel.model.Hotel
 import retrofit2.http.GET
