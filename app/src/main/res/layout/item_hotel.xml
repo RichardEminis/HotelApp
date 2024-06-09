@@ -33,6 +33,13 @@
             tools:text="HOTEL NAME" />
 
         <TextView
+            android:id="@+id/tvHotelAddress"
+            style="@style/RecipePortion"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:text="Address: NULL" />
+
+        <TextView
             android:id="@+id/tvHotelDistance"
             style="@style/RecipePortion"
             android:layout_width="match_parent"

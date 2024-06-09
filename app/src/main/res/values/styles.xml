@@ -32,48 +32,16 @@
         <item name="android:background">@color/white</item>
     </style>
 
-    <style name="CategoryStyle" parent="TextAppearance.AppCompat">
-        <item name="android:fontFamily">@font/montserrat_medium</item>
-        <item name="android:textFontWeight">500</item>
-        <item name="android:paddingBottom">@dimen/padding_bottom</item>
-        <item name="android:paddingHorizontal">@dimen/main_half</item>
-        <item name="android:textColor">@color/card_text_opacity</item>
-        <item name="android:background">@color/white</item>
-    </style>
-
     <style name="RecipePortion" parent="TextAppearance.AppCompat">
         <item name="android:fontFamily">@font/montserrat_medium</item>
-        <item name="android:textFontWeight">500</item>
         <item name="android:paddingBottom">@dimen/padding_bottom</item>
         <item name="android:paddingHorizontal">@dimen/main_half</item>
         <item name="android:textColor">@color/card_text_opacity</item>
-    </style>
-
-    <style name="IngredientsTextStyle" parent="TextAppearance.AppCompat">
-        <item name="android:fontFamily">@font/montserrat_regular</item>
-        <item name="android:textFontWeight">175</item>
-        <item name="android:paddingBottom">@dimen/main_half</item>
-        <item name="android:textColor">@color/card_text_opacity</item>
-        <item name="android:background">@color/white</item>
-        <item name="android:textAllCaps">true</item>
-    </style>
-
-    <style name="MethodTextStyle" parent="TextAppearance.AppCompat">
-        <item name="android:fontFamily">@font/montserrat_regular</item>
-        <item name="android:textFontWeight">175</item>
-        <item name="android:paddingBottom">@dimen/main_half</item>
-        <item name="android:textColor">@color/card_text_opacity</item>
-        <item name="android:background">@color/white</item>
     </style>
 
     <style name="RippleEffect" parent="TextAppearance.AppCompat">
         <item name="android:clickable">true</item>
         <item name="android:foreground">?attr/selectableItemBackground</item>
-    </style>
-
-    <style name="styleSeekBar" parent="Widget.AppCompat.SeekBar">
-        <item name="android:thumb">@drawable/shape_seekbar_thumb</item>
-        <item name="android:progressDrawable">@drawable/shape_seekbar_progress</item>
     </style>
 
 </resources>

@@ -8,7 +8,7 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.cardview.widget.CardView
-import com.example.cleverpumpkinhotel.model.Hotel
+import com.example.hotelapp.model.Hotel
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.hotelapp.R
@@ -33,6 +33,7 @@ class HotelsListAdapter(
         var hotelImage: ImageView = itemView.findViewById(R.id.ivHotelImage)
         var hotelName: TextView = itemView.findViewById(R.id.tvHotelName)
         var hotelRooms: TextView = itemView.findViewById(R.id.tvHotelAvailableRooms)
+        var hotelAddress: TextView = itemView.findViewById(R.id.tvHotelAddress)
         val context: Context = view.context
     }
 
@@ -50,7 +51,8 @@ class HotelsListAdapter(
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.hotelName.text = dataSet[position].name
-        holder.hotelRooms.text = dataSet[position].availableRooms.toString()
+        holder.hotelAddress.text = dataSet[position].address
+        holder.hotelRooms.text = dataSet[position].suitesAvailability.toString()
         holder.hotelItem.setOnClickListener {
             itemClickListener?.onItemClick(dataSet[position].id)
         }
