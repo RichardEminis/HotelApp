@@ -18,7 +18,7 @@
             android:layout_height="wrap_content">
 
             <ImageView
-                android:id="@+id/recipeImage"
+                android:id="@+id/hotelImage"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/recipe_list_height"
                 android:scaleType="centerCrop"
@@ -29,7 +29,7 @@
                 tools:src="@tools:sample/backgrounds/scenic" />
 
             <TextView
-                android:id="@+id/recipeText"
+                android:id="@+id/hotelText"
                 style="@style/StyleCategory"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -37,10 +37,10 @@
                 android:layout_marginBottom="@dimen/main_indent"
                 android:background="@drawable/shape_rounded_variants"
                 app:layout_constrainedWidth="true"
-                app:layout_constraintBottom_toBottomOf="@+id/recipeImage"
-                app:layout_constraintEnd_toEndOf="@+id/recipeImage"
+                app:layout_constraintBottom_toBottomOf="@+id/hotelImage"
+                app:layout_constraintEnd_toEndOf="@+id/hotelImage"
                 app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="@+id/recipeImage"
+                app:layout_constraintStart_toStartOf="@+id/hotelImage"
                 tools:text="Belleclaire Hotel" />
 
             <TextView
@@ -53,7 +53,7 @@
                 android:padding="0dp"
                 android:text="address"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/recipeImage" />
+                app:layout_constraintTop_toBottomOf="@+id/hotelImage" />
 
             <TextView
                 android:id="@+id/textAddressDescription"

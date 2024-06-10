@@ -5,8 +5,11 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.viewModels
+import com.bumptech.glide.Glide
 import com.example.hotelapp.R
 import com.example.hotelapp.databinding.FragmentHotelBinding
+import com.example.hotelapp.utils.ARG_HOTEL_ID
 
 class HotelFragment : Fragment() {
 
@@ -14,18 +17,44 @@ class HotelFragment : Fragment() {
         FragmentHotelBinding.inflate(layoutInflater)
     }
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-
-        }
-    }
+    private val viewModel: HotelViewModel by viewModels()
+    private var hotelId: Int = 0
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_hotel, container, false)
+    ): View {
+        return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        hotelId = arguments?.getInt(ARG_HOTEL_ID) ?: 0
+
+        viewModel.loadHotel(hotelId)
+
+        initUI()
+    }
+
+    private fun initUI() {
+        viewModel.hotelUiState.observe(viewLifecycleOwner) { state ->
+            state?.let { item ->
+
+                binding.textAddressDescription.text = item.hotel?.address
+                binding.textStarsCount.text = item.hotel?.stars.toString()
+                binding.textDistanceCount.text = item.hotel?.distance?.toString()
+                binding.textStarsCount.text = item.hotel?.stars.toString()
+                binding.hotelText.text = item.hotel?.name
+                binding.textSuitesCount.text = item.hotel?.suitesAvailability
+
+                item.hotel?.image?.let { imageUrl ->
+                    Glide.with(this)
+                        .load(imageUrl)
+                        .placeholder(R.drawable.img_placeholder)
+                        .error(R.drawable.img_error)
+                        .into(binding.hotelImage)
+                }
+            }
+        }
     }
 }

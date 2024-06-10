@@ -26,4 +26,8 @@ class HotelsListViewModel (application: Application) : AndroidViewModel(applicat
             _hotelsList.value = hotelsList.value?.copy(hotels = hotels)
         }
     }
+
+    fun getHotelById(hotelId: Int): Hotel? {
+        return _hotelsList.value?.hotels?.find { it.id == hotelId }
+    }
 }
