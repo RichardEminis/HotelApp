@@ -6,8 +6,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.example.hotelapp.R
+import com.example.hotelapp.databinding.FragmentHotelBinding
 
 class HotelFragment : Fragment() {
+
+    private val binding: FragmentHotelBinding by lazy {
+        FragmentHotelBinding.inflate(layoutInflater)
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

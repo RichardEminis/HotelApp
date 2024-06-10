@@ -41,11 +41,16 @@ class HotelRepository {
 
     suspend fun getHotels(): List<Hotel> {
         return withContext(Dispatchers.IO) {
-            service.getHotels()
+            val hotels = service.getHotels()
+            hotels.forEach { hotel ->
+                val detail = getHotelDetails(hotel.id)
+                hotel.image = "https://github.com/iMofas/ios-android-test/raw/master/${detail.image}"
+            }
+            hotels
         }
     }
 
-    suspend fun getHotelDetails(hotelId: Int): Hotel {
+    private suspend fun getHotelDetails(hotelId: Int): Hotel {
         return withContext(Dispatchers.IO) {
             service.getHotelDetails(hotelId)
         }

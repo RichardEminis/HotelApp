@@ -5,6 +5,8 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.os.bundleOf
+import androidx.fragment.app.commit
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.RecyclerView
 import com.example.hotelapp.R
@@ -63,9 +65,12 @@ class HotelsListFragment : Fragment() {
         }
     }
 
+
+
     private fun initRecycler() {
         adapter = HotelsListAdapter()
         recyclerView = binding.rvHotels
         recyclerView?.adapter = adapter
+
     }
 }
