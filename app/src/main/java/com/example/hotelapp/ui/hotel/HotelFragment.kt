@@ -10,6 +10,7 @@ import com.bumptech.glide.Glide
 import com.example.hotelapp.R
 import com.example.hotelapp.databinding.FragmentHotelBinding
 import com.example.hotelapp.utils.ARG_HOTEL_ID
+import com.example.hotelapp.utils.HOTEL_DETAIL_URL
 
 class HotelFragment : Fragment() {
 
@@ -45,11 +46,11 @@ class HotelFragment : Fragment() {
                 binding.textDistanceCount.text = item.hotel?.distance?.toString()
                 binding.textStarsCount.text = item.hotel?.stars.toString()
                 binding.hotelText.text = item.hotel?.name
-                binding.textSuitesCount.text = item.hotel?.suitesAvailability
+                binding.textSuitesCount.text = item.hotel?.suitesAvailability.toString()
 
                 item.hotel?.image?.let { imageUrl ->
                     Glide.with(this)
-                        .load(imageUrl)
+                        .load(HOTEL_DETAIL_URL + imageUrl)
                         .placeholder(R.drawable.img_placeholder)
                         .error(R.drawable.img_error)
                         .into(binding.hotelImage)

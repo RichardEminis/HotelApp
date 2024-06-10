@@ -4,6 +4,8 @@ import android.util.Log
 import com.example.hotelapp.model.Hotel
 import com.example.hotelapp.model.HotelDetail
 import com.example.hotelapp.network.ApiService
+import com.example.hotelapp.utils.HOTEL_DETAIL_URL
+import com.example.hotelapp.utils.HOTEL_LIST_URL
 import com.jakewharton.retrofit2.converter.kotlinx.serialization.asConverterFactory
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
@@ -30,7 +32,7 @@ class HotelRepository {
     private val contentType = "application/json".toMediaType()
     private val retrofit by lazy {
         Retrofit.Builder()
-            .baseUrl("https://raw.githubusercontent.com/iMofas/ios-android-test/master/")
+            .baseUrl(HOTEL_LIST_URL)
             .client(client)
             .addConverterFactory(json.asConverterFactory(contentType))
             .build()
@@ -42,7 +44,7 @@ class HotelRepository {
             val hotels = service.getHotels()
             hotels.forEach { hotel ->
                 val detail = getHotelDetails(hotel.id)
-                hotel.image = "https://github.com/iMofas/ios-android-test/raw/master/${detail.image}"
+                hotel.image = HOTEL_DETAIL_URL + detail.image
             }
             hotels
         }
