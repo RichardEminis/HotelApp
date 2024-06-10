@@ -1,19 +1,19 @@
 package com.example.hotelapp.repository
 
-import android.content.Context
 import android.util.Log
 import com.example.hotelapp.model.Hotel
+import com.example.hotelapp.model.HotelDetail
 import com.example.hotelapp.network.ApiService
-import retrofit2.Retrofit
-import kotlinx.serialization.json.Json
+import com.example.hotelapp.utils.HOTEL_DETAIL_URL
+import com.example.hotelapp.utils.HOTEL_LIST_URL
 import com.jakewharton.retrofit2.converter.kotlinx.serialization.asConverterFactory
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
+import kotlinx.serialization.json.Json
 import okhttp3.MediaType.Companion.toMediaType
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
-import retrofit2.Call
-import retrofit2.Response
+import retrofit2.Retrofit
 
 class HotelRepository {
     private val logInterceptor = HttpLoggingInterceptor { message ->
@@ -32,7 +32,7 @@ class HotelRepository {
     private val contentType = "application/json".toMediaType()
     private val retrofit by lazy {
         Retrofit.Builder()
-            .baseUrl("https://raw.githubusercontent.com/iMofas/ios-android-test/master/")
+            .baseUrl(HOTEL_LIST_URL)
             .client(client)
             .addConverterFactory(json.asConverterFactory(contentType))
             .build()
@@ -41,11 +41,16 @@ class HotelRepository {
 
     suspend fun getHotels(): List<Hotel> {
         return withContext(Dispatchers.IO) {
-            service.getHotels()
+            val hotels = service.getHotels()
+            hotels.forEach { hotel ->
+                val detail = getHotelDetails(hotel.id)
+                hotel.image = HOTEL_DETAIL_URL + detail.image
+            }
+            hotels
         }
     }
 
-    suspend fun getHotelDetails(hotelId: Int): Hotel {
+    suspend fun getHotelDetails(hotelId: Int): HotelDetail {
         return withContext(Dispatchers.IO) {
             service.getHotelDetails(hotelId)
         }
