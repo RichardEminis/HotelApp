@@ -34,6 +34,7 @@ class HotelsListAdapter(
         var hotelName: TextView = itemView.findViewById(R.id.tvHotelName)
         var hotelRooms: TextView = itemView.findViewById(R.id.tvHotelAvailableRooms)
         var hotelAddress: TextView = itemView.findViewById(R.id.tvHotelAddress)
+        var hotelDistance: TextView = itemView.findViewById(R.id.tvHotelDistance)
         val context: Context = view.context
     }
 
@@ -53,6 +54,7 @@ class HotelsListAdapter(
         val hotel = dataSet[position]
         holder.hotelName.text = hotel.name
         holder.hotelAddress.text = hotel.address
+        holder.hotelDistance.text = hotel.distance.toString()
         holder.hotelRooms.text = hotel.getAvailableSuitesCount().toString()
         holder.hotelItem.setOnClickListener {
             itemClickListener?.onItemClick(hotel.id)
