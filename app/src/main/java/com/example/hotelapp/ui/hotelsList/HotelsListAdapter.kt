@@ -57,9 +57,8 @@ class HotelsListAdapter(
             itemClickListener?.onItemClick(dataSet[position].id)
         }
 
-        val imageUrl = "https://github.com/iMofas/ios-android-test/raw/master/" + dataSet[position].image
         Glide.with(holder.context)
-            .load(imageUrl)
+            .load(dataSet[position].image)
             .placeholder(R.drawable.img_placeholder)
             .error(R.drawable.img_error)
             .into(holder.hotelImage)
