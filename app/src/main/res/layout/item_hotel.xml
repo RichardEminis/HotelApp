@@ -32,6 +32,15 @@
             android:layout_height="wrap_content"
             tools:text="HOTEL NAME" />
 
+        <RatingBar
+            android:id="@+id/ratingItemBarStars"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:isIndicator="true"
+            android:numStars="5"
+            android:stepSize="1.0"
+            app:layout_constraintStart_toStartOf="parent"/>
+
         <TextView
             android:id="@+id/tvHotelAddress"
             style="@style/RecipePortion"

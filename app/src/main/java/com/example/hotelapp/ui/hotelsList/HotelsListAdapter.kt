@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import android.widget.RatingBar
 import android.widget.TextView
 import androidx.cardview.widget.CardView
 import com.example.hotelapp.model.Hotel
@@ -35,6 +36,7 @@ class HotelsListAdapter(
         var hotelRooms: TextView = itemView.findViewById(R.id.tvHotelAvailableRooms)
         var hotelAddress: TextView = itemView.findViewById(R.id.tvHotelAddress)
         var hotelDistance: TextView = itemView.findViewById(R.id.tvHotelDistance)
+        var hotelStars: RatingBar = itemView.findViewById(R.id.ratingItemBarStars)
         val context: Context = view.context
     }
 
@@ -56,6 +58,7 @@ class HotelsListAdapter(
         holder.hotelAddress.text = hotel.address
         holder.hotelDistance.text = hotel.distance.toString()
         holder.hotelRooms.text = hotel.getAvailableSuitesCount().toString()
+        holder.hotelStars.rating = hotel.stars
         holder.hotelItem.setOnClickListener {
             itemClickListener?.onItemClick(hotel.id)
         }

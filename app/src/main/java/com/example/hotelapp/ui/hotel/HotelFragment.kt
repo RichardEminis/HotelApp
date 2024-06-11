@@ -43,9 +43,8 @@ class HotelFragment : Fragment() {
             state?.let { item ->
 
                 binding.textAddressDescription.text = item.hotel?.address
-                binding.textStarsCount.text = item.hotel?.stars.toString()
                 binding.textDistanceCount.text = item.hotel?.distance?.toString()
-                binding.textStarsCount.text = item.hotel?.stars.toString()
+                binding.ratingBarStars.rating = item.hotel?.stars ?: 0f
                 binding.hotelText.text = item.hotel?.name
                 binding.textSuitesCount.text = item.hotel?.suitesAvailability.toString()
 
