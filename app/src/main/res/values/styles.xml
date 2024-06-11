@@ -2,7 +2,7 @@
 <resources>
 
     <style name="StyleTitle14" parent="TextAppearance.AppCompat">
-        <item name="android:fontFamily">@font/montserrat_alternates_semi_bold</item>
+        <item name="android:fontFamily">@font/abril_regular</item>
         <item name="android:textAllCaps">true</item>
         <item name="cardCornerRadius">@dimen/main_half</item>
     </style>
@@ -25,7 +25,7 @@
 
     <style name="RecipeStyle" parent="StyleTitle14">
         <item name="android:textColor">@color/category_color</item>
-        <item name="android:textSize">@dimen/text_size</item>
+        <item name="android:textSize">@dimen/main_indent</item>
         <item name="android:textAppearance">@style/StyleTitle14</item>
         <item name="android:paddingVertical">@dimen/main_half</item>
         <item name="android:paddingHorizontal">@dimen/main_half</item>
