@@ -6,11 +6,11 @@
     <string name="available_rooms">Available Rooms:</string>
     <string name="back_to_hotel_list">Back to Hotel List</string>
     <string name="suites_availability">suites availability:</string>
-    <string name="distance_to_city_center">distance to city center:</string>
+    <string name="distance_to_city_center">Distance to city center:</string>
     <string name="stars">stars:</string>
     <string-array name="filter_options">
-        <item>По умолчанию</item>
-        <item>По расстоянию от центра</item>
-        <item>По количеству свободных номеров</item>
+        <item>Default</item>
+        <item>sort by distance from city center</item>
+        <item>sorting by number of available rooms</item>
     </string-array>
 </resources>

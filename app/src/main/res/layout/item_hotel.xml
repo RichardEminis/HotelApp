@@ -33,7 +33,7 @@
             style="@style/RecipeStyle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            tools:text="HOTEL NAME" />
+            tools:text="HOTEL NAME"/>
 
         <RatingBar
             android:id="@+id/ratingItemBarStars"
@@ -73,7 +73,7 @@
                 style="@style/RecipePortion"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/distance" />
+                android:text="@string/distance_to_city_center" />
 
             <TextView
                 android:id="@+id/tvHotelDistance"
