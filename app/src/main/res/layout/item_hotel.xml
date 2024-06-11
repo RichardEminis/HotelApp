@@ -43,13 +43,14 @@
 
         <LinearLayout
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
 
             <TextView
                 style="@style/RecipePortion"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Address:" />
+                android:text="@string/address" />
 
             <TextView
                 android:id="@+id/tvHotelAddress"
@@ -69,7 +70,7 @@
                 style="@style/RecipePortion"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Distance:" />
+                android:text="@string/distance" />
 
             <TextView
                 android:id="@+id/tvHotelDistance"
@@ -88,7 +89,7 @@
                 style="@style/RecipePortion"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Available Rooms:" />
+                android:text="@string/available_rooms" />
 
             <TextView
                 android:id="@+id/tvHotelAvailableRooms"
@@ -98,7 +99,6 @@
                 tools:text="NULL" />
 
         </LinearLayout>
-
 
     </LinearLayout>
 
