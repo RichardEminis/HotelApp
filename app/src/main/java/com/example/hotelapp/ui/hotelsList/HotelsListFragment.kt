@@ -5,6 +5,8 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.AdapterView
+import android.widget.ArrayAdapter
 import androidx.core.os.bundleOf
 import androidx.fragment.app.add
 import androidx.fragment.app.commit
@@ -39,6 +41,8 @@ class HotelsListFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         initRecycler()
+        setupSpinner()
+
 
         viewModel.loadHotels()
 
@@ -68,5 +72,28 @@ class HotelsListFragment : Fragment() {
                 openHotelById(hotelId)
             }
         })
+    }
+
+    private fun setupSpinner() {
+        val spinner = binding.spinnerFilter
+        ArrayAdapter.createFromResource(
+            requireContext(),
+            R.array.filter_options,
+            android.R.layout.simple_spinner_item
+        ).also { adapter ->
+            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+            spinner.adapter = adapter
+        }
+
+        spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(parent: AdapterView<*>, view: View?, position: Int, id: Long) {
+                when (position) {
+                    0 -> viewModel.sortHotelsByDistance()
+                    1 -> viewModel.sortHotelsByRooms()
+                }
+            }
+
+            override fun onNothingSelected(parent: AdapterView<*>) {}
+        }
     }
 }

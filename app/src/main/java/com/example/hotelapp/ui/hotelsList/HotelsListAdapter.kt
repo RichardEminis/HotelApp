@@ -50,11 +50,12 @@ class HotelsListAdapter(
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.hotelName.text = dataSet[position].name
-        holder.hotelAddress.text = dataSet[position].address
-        holder.hotelRooms.text = dataSet[position].suitesAvailability.toString()
+        val hotel = dataSet[position]
+        holder.hotelName.text = hotel.name
+        holder.hotelAddress.text = hotel.address
+        holder.hotelRooms.text = hotel.getAvailableSuitesCount().toString()
         holder.hotelItem.setOnClickListener {
-            itemClickListener?.onItemClick(dataSet[position].id)
+            itemClickListener?.onItemClick(hotel.id)
         }
 
         Glide.with(holder.context)
