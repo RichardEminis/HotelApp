@@ -4,6 +4,10 @@
     <string name="address">Address:</string>
     <string name="distance">Distance:</string>
     <string name="available_rooms">Available Rooms:</string>
+    <string name="back_to_hotel_list">Back to Hotel List</string>
+    <string name="suites_availability">suites availability:</string>
+    <string name="distance_to_city_center">distance to city center:</string>
+    <string name="stars">stars:</string>
     <string-array name="filter_options">
         <item>По расстоянию от центра</item>
         <item>По количеству свободных номеров</item>

@@ -23,6 +23,9 @@
             android:layout_height="130dp"
             android:contentDescription="@string/hotel_image_description"
             android:scaleType="centerCrop"
+            android:background="@color/black"
+            android:scaleX="1.05"
+            android:scaleY="1.05"
             tools:srcCompat="@drawable/ic_launcher_background" />
 
         <TextView
