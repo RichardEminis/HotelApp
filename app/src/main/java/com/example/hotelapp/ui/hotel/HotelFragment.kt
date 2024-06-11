@@ -9,6 +9,7 @@ import androidx.fragment.app.viewModels
 import com.bumptech.glide.Glide
 import com.example.hotelapp.R
 import com.example.hotelapp.databinding.FragmentHotelBinding
+import com.example.hotelapp.ui.hotelsList.HotelsListFragment
 import com.example.hotelapp.utils.ARG_HOTEL_ID
 import com.example.hotelapp.utils.HOTEL_DETAIL_URL
 
@@ -54,6 +55,13 @@ class HotelFragment : Fragment() {
                         .placeholder(R.drawable.img_placeholder)
                         .error(R.drawable.img_error)
                         .into(binding.hotelImage)
+                }
+
+                binding.btnBack.setOnClickListener {
+                    parentFragmentManager.beginTransaction()
+                        .replace(R.id.mainContainer, HotelsListFragment())
+                        .addToBackStack(null)
+                        .commit()
                 }
             }
         }
