@@ -18,7 +18,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/main_indent"
-            android:layout_marginTop="@dimen/main_indent"
+            android:layout_marginTop="30dp"
             android:layout_marginEnd="@dimen/main_indent"
             android:entries="@array/filter_options"
             app:layout_constraintEnd_toEndOf="parent"
@@ -30,6 +30,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginHorizontal="@dimen/main_indent"
+            android:layout_marginBottom="@dimen/main_indent"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             tools:itemCount="8"
             tools:listitem="@layout/item_hotel" />

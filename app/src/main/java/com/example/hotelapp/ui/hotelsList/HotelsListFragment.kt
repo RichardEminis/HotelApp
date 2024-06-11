@@ -88,8 +88,9 @@ class HotelsListFragment : Fragment() {
         spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(parent: AdapterView<*>, view: View?, position: Int, id: Long) {
                 when (position) {
-                    0 -> viewModel.sortHotelsByDistance()
-                    1 -> viewModel.sortHotelsByRooms()
+                    0 -> viewModel.loadHotels()
+                    1 -> viewModel.sortHotelsByDistance()
+                    2 -> viewModel.sortHotelsByRooms()
                 }
             }
 
