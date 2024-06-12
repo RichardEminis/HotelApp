@@ -75,18 +75,22 @@ class HotelFragment : Fragment() {
     @SuppressLint("UseCompatLoadingForDrawables")
     private fun displaySuitesAvailability(suites: String) {
         val suitesArray = suites.split(":")
+        binding.linearLayoutSuites.removeAllViews()
+
         for (suite in suitesArray) {
-            val textView = TextView(requireContext())
-            textView.text = suite
-            textView.setPadding(16, 8, 16, 8)
-            textView.background = resources.getDrawable(R.drawable.rounded_border, null)
-            val layoutParams = LinearLayout.LayoutParams(
-                LinearLayout.LayoutParams.WRAP_CONTENT,
-                LinearLayout.LayoutParams.WRAP_CONTENT
-            )
-            layoutParams.setMargins(8, 8, 8, 8)
-            textView.layoutParams = layoutParams
-            binding.linearLayoutSuites.addView(textView)
+            if (suite.isNotBlank()) {
+                val textView = TextView(requireContext())
+                textView.text = suite
+                textView.setPadding(16, 8, 16, 8)
+                textView.background = resources.getDrawable(R.drawable.rounded_border, null)
+                val layoutParams = LinearLayout.LayoutParams(
+                    LinearLayout.LayoutParams.WRAP_CONTENT,
+                    LinearLayout.LayoutParams.WRAP_CONTENT
+                )
+                layoutParams.setMargins(8, 8, 8, 8)
+                textView.layoutParams = layoutParams
+                binding.linearLayoutSuites.addView(textView)
+            }
         }
     }
 }
