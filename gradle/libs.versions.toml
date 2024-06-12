@@ -19,6 +19,8 @@ appcompat = "1.7.0"
 cardview = "1.0.0"
 glide = "4.16.0"
 material = "1.12.0"
+hiltAndroidCompiler = "2.51.1"
+ksp = "2.0.0-1.0.21"
 
 [libraries]
 androidx-constraintlayout = { module = "androidx.constraintlayout:constraintlayout", version.ref = "constraintlayout" }
@@ -47,8 +49,12 @@ androidx-cardview = { group = "androidx.cardview", name = "cardview", version.re
 glide = { group = "com.github.bumptech.glide", name = "glide", version.ref = "glide" }
 material = { group = "com.google.android.material", name = "material", version.ref = "material" }
 retrofit = { group = "com.squareup.retrofit2", name = "retrofit", version.ref = "retrofit" }
+hilt-android = { module = "com.google.dagger:hilt-android", version.ref = "hiltAndroidCompiler" }
+hilt-android-compiler = { module = "com.google.dagger:hilt-android-compiler", version.ref = "hiltAndroidCompiler" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
 kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 kotlinSerialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
+hiltAndroid = { id = "com.google.dagger.hilt.android", version.ref = "hiltAndroidCompiler" }
+ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
