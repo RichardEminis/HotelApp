@@ -20,8 +20,11 @@
             <ImageView
                 android:id="@+id/hotelImage"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/recipe_list_height"
+                android:layout_height="@dimen/hotel_list_height"
+                android:background="@color/black"
                 android:scaleType="centerCrop"
+                android:scaleX="1.05"
+                android:scaleY="1.05"
                 app:layout_constrainedWidth="true"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -30,7 +33,7 @@
 
             <TextView
                 android:id="@+id/hotelText"
-                style="@style/StyleCategory"
+                style="@style/StyleDescriptionHeadline"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="@dimen/main_indent"
@@ -43,101 +46,119 @@
                 app:layout_constraintStart_toStartOf="@+id/hotelImage"
                 tools:text="Belleclaire Hotel" />
 
-            <TextView
-                android:id="@+id/textAddress"
-                style="@style/StyleTitle14"
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/main_indent"
-                android:layout_marginTop="@dimen/main_indent"
-                android:padding="0dp"
-                android:text="address"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/hotelImage" />
+                android:background="@color/background_color"
+                android:orientation="vertical"
+                app:layout_constraintTop_toBottomOf="@+id/hotelImage">
 
-            <TextView
-                android:id="@+id/textAddressDescription"
-                style="@style/RecipePortion"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/main_indent"
-                android:layout_marginTop="@dimen/portion_indent"
-                android:padding="0dp"
-                android:text="250 West 77th Street, Manhattan"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textAddress" />
+                <TextView
+                    android:id="@+id/textAddress"
+                    style="@style/StyleTitle14"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/main_indent"
+                    android:layout_marginTop="@dimen/main_indent"
+                    android:padding="0dp"
+                    android:text="@string/address"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/hotelImage" />
 
-            <TextView
-                android:id="@+id/textStars"
-                style="@style/StyleTitle14"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/main_indent"
-                android:layout_marginTop="@dimen/main_indent"
-                android:padding="0dp"
-                android:text="stars:"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textAddressDescription" />
+                <TextView
+                    android:id="@+id/textAddressDescription"
+                    style="@style/StyleDescriptionText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/main_indent"
+                    android:layout_marginTop="@dimen/portion_indent"
+                    android:padding="0dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textAddress"
+                    tools:text="250 West 77th Street, Manhattan" />
 
-            <TextView
-                android:id="@+id/textStarsCount"
-                style="@style/RecipePortion"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/main_indent"
-                android:layout_marginTop="@dimen/portion_indent"
-                android:padding="0dp"
-                android:text="3.0"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textStars" />
+                <TextView
+                    android:id="@+id/textStars"
+                    style="@style/StyleTitle14"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/main_indent"
+                    android:layout_marginTop="@dimen/main_indent"
+                    android:padding="0dp"
+                    android:text="@string/stars"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textAddressDescription" />
 
-            <TextView
-                android:id="@+id/textDistance"
-                style="@style/StyleTitle14"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/main_indent"
-                android:layout_marginTop="@dimen/main_indent"
-                android:padding="0dp"
-                android:text="distance to city center:"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textStarsCount" />
+                <RatingBar
+                    android:id="@+id/ratingBarStars"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/main_indent"
+                    android:layout_marginTop="@dimen/portion_indent"
+                    android:isIndicator="true"
+                    android:numStars="5"
+                    android:stepSize="1.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textStars" />
 
-            <TextView
-                android:id="@+id/textDistanceCount"
-                style="@style/RecipePortion"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/main_indent"
-                android:layout_marginTop="@dimen/portion_indent"
-                android:padding="0dp"
-                android:text="100"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textDistance" />
+                <TextView
+                    android:id="@+id/textDistance"
+                    style="@style/StyleTitle14"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/main_indent"
+                    android:padding="0dp"
+                    android:text="@string/distance_to_city_center"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/ratingBarStars" />
 
-            <TextView
-                android:id="@+id/textSuites"
-                style="@style/StyleTitle14"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/main_indent"
-                android:layout_marginTop="@dimen/main_indent"
-                android:padding="0dp"
-                android:text="suites availability:"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textDistanceCount" />
+                <TextView
+                    android:id="@+id/textDistanceCount"
+                    style="@style/StyleDescriptionText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/main_indent"
+                    android:layout_marginTop="@dimen/portion_indent"
+                    android:padding="0dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textDistance"
+                    tools:text="100" />
 
-            <TextView
-                android:id="@+id/textSuitesCount"
-                style="@style/RecipePortion"
+                <TextView
+                    android:id="@+id/textSuites"
+                    style="@style/StyleTitle14"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/main_indent"
+                    android:layout_marginTop="@dimen/main_indent"
+                    android:padding="0dp"
+                    android:text="@string/suites_availability"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textDistanceCount" />
+
+                <LinearLayout
+                    android:id="@+id/linearLayoutSuites"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/main_indent"
+                    android:layout_marginTop="@dimen/portion_indent"
+                    android:orientation="horizontal"
+                    android:padding="0dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textSuites" />
+
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/btnBack"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/main_indent"
-                android:layout_marginTop="@dimen/portion_indent"
-                android:padding="0dp"
-                android:text="100"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textSuites" />
+                android:layout_gravity="center"
+                android:layout_marginBottom="8dp"
+                android:text="@string/back_to_hotel_list"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

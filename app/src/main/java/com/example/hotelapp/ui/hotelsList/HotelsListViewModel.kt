@@ -5,8 +5,8 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
-import com.example.hotelapp.repository.HotelRepository
 import com.example.hotelapp.model.Hotel
+import com.example.hotelapp.repository.HotelRepository
 import kotlinx.coroutines.launch
 
 data class HotelsListState(
@@ -29,5 +29,15 @@ class HotelsListViewModel (application: Application) : AndroidViewModel(applicat
 
     fun getHotelById(hotelId: Int): Hotel? {
         return _hotelsList.value?.hotels?.find { it.id == hotelId }
+    }
+
+    fun sortHotelsByDistance() {
+        val sortedHotels = _hotelsList.value?.hotels?.sortedBy { it.distance }
+        _hotelsList.value = sortedHotels?.let { _hotelsList.value?.copy(hotels = it) }
+    }
+
+    fun sortHotelsByRooms() {
+        val sortedHotels = _hotelsList.value?.hotels?.sortedByDescending { it.getAvailableSuitesCount() }
+        _hotelsList.value = sortedHotels?.let { _hotelsList.value?.copy(hotels = it) }
     }
 }

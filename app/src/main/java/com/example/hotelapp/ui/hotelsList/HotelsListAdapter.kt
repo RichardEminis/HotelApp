@@ -6,12 +6,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import android.widget.RatingBar
 import android.widget.TextView
 import androidx.cardview.widget.CardView
-import com.example.hotelapp.model.Hotel
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.hotelapp.R
+import com.example.hotelapp.model.Hotel
 
 class HotelsListAdapter(
     private var itemClickListener: OnItemClickListener? = null,
@@ -34,6 +35,8 @@ class HotelsListAdapter(
         var hotelName: TextView = itemView.findViewById(R.id.tvHotelName)
         var hotelRooms: TextView = itemView.findViewById(R.id.tvHotelAvailableRooms)
         var hotelAddress: TextView = itemView.findViewById(R.id.tvHotelAddress)
+        var hotelDistance: TextView = itemView.findViewById(R.id.tvHotelDistance)
+        var hotelStars: RatingBar = itemView.findViewById(R.id.ratingItemBarStars)
         val context: Context = view.context
     }
 
@@ -50,11 +53,14 @@ class HotelsListAdapter(
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.hotelName.text = dataSet[position].name
-        holder.hotelAddress.text = dataSet[position].address
-        holder.hotelRooms.text = dataSet[position].suitesAvailability.toString()
+        val hotel = dataSet[position]
+        holder.hotelName.text = hotel.name
+        holder.hotelAddress.text = hotel.address
+        holder.hotelDistance.text = hotel.distance.toString()
+        holder.hotelRooms.text = hotel.getAvailableSuitesCount().toString()
+        holder.hotelStars.rating = hotel.stars
         holder.hotelItem.setOnClickListener {
-            itemClickListener?.onItemClick(dataSet[position].id)
+            itemClickListener?.onItemClick(hotel.id)
         }
 
         Glide.with(holder.context)
