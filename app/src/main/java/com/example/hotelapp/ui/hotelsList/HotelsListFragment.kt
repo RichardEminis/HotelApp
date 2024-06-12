@@ -16,7 +16,9 @@ import com.example.hotelapp.R
 import com.example.hotelapp.databinding.FragmentHotelsListBinding
 import com.example.hotelapp.ui.hotel.HotelFragment
 import com.example.hotelapp.utils.ARG_HOTEL_ID
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class HotelsListFragment : Fragment() {
 
     private var recyclerView: RecyclerView? = null

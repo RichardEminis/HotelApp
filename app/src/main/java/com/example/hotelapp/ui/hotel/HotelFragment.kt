@@ -15,7 +15,9 @@ import com.example.hotelapp.databinding.FragmentHotelBinding
 import com.example.hotelapp.ui.hotelsList.HotelsListFragment
 import com.example.hotelapp.utils.ARG_HOTEL_ID
 import com.example.hotelapp.utils.HOTEL_DETAIL_URL
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class HotelFragment : Fragment() {
 
     private val binding: FragmentHotelBinding by lazy {
