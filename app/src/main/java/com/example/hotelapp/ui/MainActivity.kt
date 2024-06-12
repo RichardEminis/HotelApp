@@ -7,7 +7,9 @@ import androidx.fragment.app.commit
 import com.example.hotelapp.R
 import com.example.hotelapp.databinding.ActivityMainBinding
 import com.example.hotelapp.ui.hotelsList.HotelsListFragment
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
     private var _binding: ActivityMainBinding? = null
     private val binding

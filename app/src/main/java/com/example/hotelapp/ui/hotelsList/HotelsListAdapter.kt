@@ -13,8 +13,9 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.hotelapp.R
 import com.example.hotelapp.model.Hotel
+import javax.inject.Inject
 
-class HotelsListAdapter(
+class HotelsListAdapter@Inject constructor(
     private var itemClickListener: OnItemClickListener? = null,
 ): RecyclerView.Adapter<HotelsListAdapter.ViewHolder>()  {
 
