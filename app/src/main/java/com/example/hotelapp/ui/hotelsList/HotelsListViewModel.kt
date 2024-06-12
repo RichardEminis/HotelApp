@@ -5,8 +5,8 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
-import com.example.hotelapp.repository.HotelRepository
 import com.example.hotelapp.model.Hotel
+import com.example.hotelapp.repository.HotelRepository
 import kotlinx.coroutines.launch
 
 data class HotelsListState(

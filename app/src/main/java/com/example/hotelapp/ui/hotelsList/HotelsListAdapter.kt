@@ -9,10 +9,10 @@ import android.widget.ImageView
 import android.widget.RatingBar
 import android.widget.TextView
 import androidx.cardview.widget.CardView
-import com.example.hotelapp.model.Hotel
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.hotelapp.R
+import com.example.hotelapp.model.Hotel
 
 class HotelsListAdapter(
     private var itemClickListener: OnItemClickListener? = null,

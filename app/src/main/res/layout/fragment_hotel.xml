@@ -20,20 +20,20 @@
             <ImageView
                 android:id="@+id/hotelImage"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/recipe_list_height"
+                android:layout_height="@dimen/hotel_list_height"
+                android:background="@color/black"
                 android:scaleType="centerCrop"
+                android:scaleX="1.05"
+                android:scaleY="1.05"
                 app:layout_constrainedWidth="true"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                android:background="@color/black"
-                android:scaleX="1.05"
-                android:scaleY="1.05"
                 tools:src="@tools:sample/backgrounds/scenic" />
 
             <TextView
                 android:id="@+id/hotelText"
-                style="@style/StyleCategory"
+                style="@style/StyleDescriptionHeadline"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="@dimen/main_indent"
@@ -49,9 +49,9 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@color/background_color"
                 android:orientation="vertical"
-                app:layout_constraintTop_toBottomOf="@+id/hotelImage"
-                android:background="@color/background_color">
+                app:layout_constraintTop_toBottomOf="@+id/hotelImage">
 
                 <TextView
                     android:id="@+id/textAddress"
@@ -67,15 +67,15 @@
 
                 <TextView
                     android:id="@+id/textAddressDescription"
-                    style="@style/RecipePortion"
+                    style="@style/StyleDescriptionText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/main_indent"
                     android:layout_marginTop="@dimen/portion_indent"
                     android:padding="0dp"
-                    tools:text="250 West 77th Street, Manhattan"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/textAddress" />
+                    app:layout_constraintTop_toBottomOf="@+id/textAddress"
+                    tools:text="250 West 77th Street, Manhattan" />
 
                 <TextView
                     android:id="@+id/textStars"
@@ -99,7 +99,7 @@
                     android:numStars="5"
                     android:stepSize="1.0"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/textStars"/>
+                    app:layout_constraintTop_toBottomOf="@+id/textStars" />
 
                 <TextView
                     android:id="@+id/textDistance"
@@ -114,15 +114,15 @@
 
                 <TextView
                     android:id="@+id/textDistanceCount"
-                    style="@style/RecipePortion"
+                    style="@style/StyleDescriptionText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/main_indent"
                     android:layout_marginTop="@dimen/portion_indent"
                     android:padding="0dp"
-                    tools:text="100"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/textDistance" />
+                    app:layout_constraintTop_toBottomOf="@+id/textDistance"
+                    tools:text="100" />
 
                 <TextView
                     android:id="@+id/textSuites"
@@ -137,12 +137,12 @@
                     app:layout_constraintTop_toBottomOf="@+id/textDistanceCount" />
 
                 <LinearLayout
+                    android:id="@+id/linearLayoutSuites"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:id="@+id/linearLayoutSuites"
                     android:layout_marginStart="@dimen/main_indent"
                     android:layout_marginTop="@dimen/portion_indent"
+                    android:orientation="horizontal"
                     android:padding="0dp"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/textSuites" />
@@ -158,7 +158,7 @@
                 android:text="@string/back_to_hotel_list"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"/>
+                app:layout_constraintStart_toStartOf="parent" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
