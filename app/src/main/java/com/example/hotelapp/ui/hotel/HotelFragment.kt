@@ -15,10 +15,16 @@ import com.example.hotelapp.databinding.FragmentHotelBinding
 import com.example.hotelapp.ui.hotelsList.HotelsListFragment
 import com.example.hotelapp.utils.ARG_HOTEL_ID
 import com.example.hotelapp.utils.HOTEL_DETAIL_URL
+import com.google.android.gms.maps.CameraUpdateFactory
+import com.google.android.gms.maps.GoogleMap
+import com.google.android.gms.maps.MapView
+import com.google.android.gms.maps.OnMapReadyCallback
+import com.google.android.gms.maps.model.LatLng
+import com.google.android.gms.maps.model.MarkerOptions
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class HotelFragment : Fragment() {
+class HotelFragment : Fragment() , OnMapReadyCallback {
 
     private val binding: FragmentHotelBinding by lazy {
         FragmentHotelBinding.inflate(layoutInflater)
@@ -26,6 +32,8 @@ class HotelFragment : Fragment() {
 
     private val viewModel: HotelViewModel by viewModels()
     private var hotelId: Int = 0
+    private var googleMap: GoogleMap? = null
+    private lateinit var mapView: MapView
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -39,6 +47,10 @@ class HotelFragment : Fragment() {
         hotelId = arguments?.getInt(ARG_HOTEL_ID) ?: 0
 
         viewModel.loadHotel(hotelId)
+
+        mapView = binding.mapView
+        mapView.onCreate(savedInstanceState)
+        mapView.getMapAsync(this)
 
         initUI()
     }
@@ -61,6 +73,14 @@ class HotelFragment : Fragment() {
                         .placeholder(R.drawable.img_placeholder)
                         .error(R.drawable.img_error)
                         .into(binding.hotelImage)
+                }
+
+                item.hotel?.lat?.let { lat ->
+                    item.hotel.lon?.let { lon ->
+                        val location = LatLng(lat, lon)
+                        googleMap?.addMarker(MarkerOptions().position(location).title("Hotel Location"))
+                        googleMap?.moveCamera(CameraUpdateFactory.newLatLngZoom(location, 15f))
+                    }
                 }
 
                 binding.btnBack.setOnClickListener {
@@ -93,5 +113,29 @@ class HotelFragment : Fragment() {
                 binding.linearLayoutSuites.addView(textView)
             }
         }
+    }
+
+    override fun onMapReady(map: GoogleMap) {
+        googleMap = map
+    }
+
+    override fun onResume() {
+        super.onResume()
+        mapView.onResume()
+    }
+
+    override fun onPause() {
+        super.onPause()
+        mapView.onPause()
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        mapView.onDestroy()
+    }
+
+    override fun onLowMemory() {
+        super.onLowMemory()
+        mapView.onLowMemory()
     }
 }

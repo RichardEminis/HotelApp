@@ -13,4 +13,5 @@
         <item>sort by distance from city center</item>
         <item>sorting by number of available rooms</item>
     </string-array>
+    <string name="google_maps_key" translatable="false">AIzaSyDfu_tw3Ay_ECLKe82VJ_AUBZ2C6fET7YI</string>
 </resources>

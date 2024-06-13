@@ -13,7 +13,7 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 data class HotelUiState(
-    val hotel: HotelDetail? = null
+    val hotel: HotelDetail? = null,
 )
 
 @HiltViewModel
