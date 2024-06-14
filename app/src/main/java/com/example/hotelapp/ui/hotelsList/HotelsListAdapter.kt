@@ -12,6 +12,7 @@ import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.hotelapp.R
+import com.example.hotelapp.databinding.ItemHotelBinding
 import com.example.hotelapp.model.Hotel
 import javax.inject.Inject
 
@@ -30,23 +31,29 @@ class HotelsListAdapter(
         fun onItemClick(hotelId: Int)
     }
 
-    class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        val hotelItem: CardView = itemView.findViewById(R.id.cvHotelItem)
-        var hotelImage: ImageView = itemView.findViewById(R.id.ivHotelImage)
-        var hotelName: TextView = itemView.findViewById(R.id.tvHotelName)
-        var hotelRooms: TextView = itemView.findViewById(R.id.tvHotelAvailableRooms)
-        var hotelAddress: TextView = itemView.findViewById(R.id.tvHotelAddress)
-        var hotelDistance: TextView = itemView.findViewById(R.id.tvHotelDistance)
-        var hotelStars: RatingBar = itemView.findViewById(R.id.ratingItemBarStars)
-        val context: Context = view.context
+    class ViewHolder(private val binding: ItemHotelBinding) :
+        RecyclerView.ViewHolder(binding.root) {
+        fun bind(hotel: Hotel, clickListener: OnItemClickListener?) {
+            binding.tvHotelName.text = hotel.name
+            binding.tvHotelAddress.text = hotel.address
+            binding.tvHotelDistance.text = hotel.distance.toString()
+            binding.tvHotelAvailableRooms.text = hotel.getAvailableSuitesCount().toString()
+            binding.ratingItemBarStars.rating = hotel.stars
+            binding.cvHotelItem.setOnClickListener {
+                clickListener?.onItemClick(hotel.id)
+            }
+
+            Glide.with(itemView.context)
+                .load(hotel.image)
+                .placeholder(R.drawable.img_placeholder)
+                .error(R.drawable.img_error)
+                .into(binding.ivHotelImage)
+        }
     }
 
-    override fun onCreateViewHolder(
-        parent: ViewGroup, viewType: Int
-    ): ViewHolder {
-        val inflater =
-            LayoutInflater.from(parent.context).inflate(R.layout.item_hotel, parent, false)
-        return ViewHolder(inflater)
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
+        val binding = ItemHotelBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        return ViewHolder(binding)
     }
 
     override fun getItemCount(): Int {
@@ -55,20 +62,7 @@ class HotelsListAdapter(
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val hotel = dataSet[position]
-        holder.hotelName.text = hotel.name
-        holder.hotelAddress.text = hotel.address
-        holder.hotelDistance.text = hotel.distance.toString()
-        holder.hotelRooms.text = hotel.getAvailableSuitesCount().toString()
-        holder.hotelStars.rating = hotel.stars
-        holder.hotelItem.setOnClickListener {
-            itemClickListener?.onItemClick(hotel.id)
-        }
-
-        Glide.with(holder.context)
-            .load(dataSet[position].image)
-            .placeholder(R.drawable.img_placeholder)
-            .error(R.drawable.img_error)
-            .into(holder.hotelImage)
+        holder.bind(hotel, itemClickListener)
     }
 
     fun setOnItemClickListener(listener: OnItemClickListener) {
