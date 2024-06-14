@@ -1,6 +1,9 @@
 package com.example.hotelapp.ui.hotel
 
 import android.annotation.SuppressLint
+import android.content.Context
+import android.net.ConnectivityManager
+import android.net.NetworkCapabilities
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -15,6 +18,7 @@ import com.example.hotelapp.databinding.FragmentHotelBinding
 import com.example.hotelapp.ui.hotelsList.HotelsListFragment
 import com.example.hotelapp.utils.ARG_HOTEL_ID
 import com.example.hotelapp.utils.HOTEL_DETAIL_URL
+import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -38,7 +42,11 @@ class HotelFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         hotelId = arguments?.getInt(ARG_HOTEL_ID) ?: 0
 
-        viewModel.loadHotel(hotelId)
+        if (isInternetAvailable()) {
+            viewModel.loadHotel(hotelId)
+        } else {
+            showNoInternetSnackbar()
+        }
 
         initUI()
     }
@@ -93,5 +101,25 @@ class HotelFragment : Fragment() {
                 binding.linearLayoutSuites.addView(textView)
             }
         }
+    }
+
+    private fun isInternetAvailable(): Boolean {
+        val connectivityManager =
+            requireContext().getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+        val network = connectivityManager.activeNetwork ?: return false
+        val capabilities = connectivityManager.getNetworkCapabilities(network) ?: return false
+        return capabilities.hasCapability(NetworkCapabilities.NET_CAPABILITY_INTERNET)
+    }
+
+    private fun showNoInternetSnackbar() {
+        Snackbar.make(binding.root, "No network connection", Snackbar.LENGTH_INDEFINITE)
+            .setAction("Retry") {
+                if (isInternetAvailable()) {
+                    viewModel.loadHotel(hotelId)
+                } else {
+                    showNoInternetSnackbar()
+                }
+            }
+            .show()
     }
 }

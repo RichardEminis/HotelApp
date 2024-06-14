@@ -1,7 +1,6 @@
 package com.example.hotelapp.ui.hotel
 
-import android.app.Application
-import androidx.lifecycle.AndroidViewModel
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -25,8 +24,12 @@ class HotelViewModel @Inject constructor(private val hotelRepository: HotelRepos
 
     fun loadHotel(hotelId: Int) {
         viewModelScope.launch {
-            val hotel = hotelRepository.getHotelDetails(hotelId)
-            _hotelUiState.value = hotelUiState.value?.copy(hotel = hotel)
+            try {
+                val hotel = hotelRepository.getHotelDetails(hotelId)
+                _hotelUiState.value = hotelUiState.value?.copy(hotel = hotel)
+            } catch (e: Exception) {
+                Log.e("HotelsListViewModel", "Error loading hotels", e)
+            }
         }
     }
 }
