@@ -15,9 +15,9 @@ import com.example.hotelapp.R
 import com.example.hotelapp.model.Hotel
 import javax.inject.Inject
 
-class HotelsListAdapter@Inject constructor(
+class HotelsListAdapter(
     private var itemClickListener: OnItemClickListener? = null,
-): RecyclerView.Adapter<HotelsListAdapter.ViewHolder>()  {
+) : RecyclerView.Adapter<HotelsListAdapter.ViewHolder>() {
 
     var dataSet: List<Hotel> = emptyList()
         @SuppressLint("NotifyDataSetChanged")
