@@ -63,13 +63,11 @@ class HotelFragment : Fragment() {
                     displaySuitesAvailability(suites)
                 }
 
-                item.hotel?.image?.let { imageUrl ->
-                    Glide.with(this)
-                        .load(HOTEL_DETAIL_URL + imageUrl)
-                        .placeholder(R.drawable.img_placeholder)
-                        .error(R.drawable.img_error)
-                        .into(binding.hotelImage)
-                }
+                Glide.with(this)
+                    .load(item.hotel?.image?.let { HOTEL_DETAIL_URL + it } ?: R.drawable.img_error)
+                    .placeholder(R.drawable.img_placeholder)
+                    .error(R.drawable.img_error)
+                    .into(binding.hotelImage)
 
                 binding.btnBack.setOnClickListener {
                     parentFragmentManager.beginTransaction()

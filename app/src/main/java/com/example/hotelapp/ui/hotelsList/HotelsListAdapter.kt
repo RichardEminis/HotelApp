@@ -44,7 +44,7 @@ class HotelsListAdapter(
             }
 
             Glide.with(itemView.context)
-                .load(hotel.image)
+                .load(hotel.image ?: R.drawable.img_error)
                 .placeholder(R.drawable.img_placeholder)
                 .error(R.drawable.img_error)
                 .into(binding.ivHotelImage)
