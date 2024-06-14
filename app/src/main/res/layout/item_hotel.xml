@@ -31,7 +31,7 @@
 
         <TextView
             android:id="@+id/tvHotelName"
-            style="@style/StyleHeadlineText"
+            style="@style/StyleHeadlineCardView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/main_half"

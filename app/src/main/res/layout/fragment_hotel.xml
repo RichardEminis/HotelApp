@@ -33,7 +33,7 @@
 
             <TextView
                 android:id="@+id/hotelText"
-                style="@style/StyleDescriptionHeadline"
+                style="@style/StyleHeadline"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="@dimen/main_indent"
@@ -55,7 +55,7 @@
 
                 <TextView
                     android:id="@+id/textAddress"
-                    style="@style/StyleTitle14"
+                    style="@style/StyleHeadlineText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/main_indent"
@@ -79,7 +79,7 @@
 
                 <TextView
                     android:id="@+id/textStars"
-                    style="@style/StyleTitle14"
+                    style="@style/StyleHeadlineText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/main_indent"
@@ -103,7 +103,7 @@
 
                 <TextView
                     android:id="@+id/textDistance"
-                    style="@style/StyleTitle14"
+                    style="@style/StyleHeadlineText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/main_indent"
@@ -126,7 +126,7 @@
 
                 <TextView
                     android:id="@+id/textSuites"
-                    style="@style/StyleTitle14"
+                    style="@style/StyleHeadlineText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/main_indent"
