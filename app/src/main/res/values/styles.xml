@@ -2,12 +2,12 @@
 <resources>
 
     <style name="StyleTitle14" parent="TextAppearance.AppCompat">
-        <item name="android:fontFamily">@font/abril_regular</item>
         <item name="android:textAllCaps">true</item>
         <item name="cardCornerRadius">@dimen/main_half</item>
     </style>
 
-    <style name="StyleDescriptionHeadline" parent="StyleTitle14">
+    <style name="StyleHeadline" parent="StyleTitle14">
+        <item name="android:fontFamily">@font/abril_regular</item>
         <item name="android:textColor">@color/headline_color</item>
         <item name="android:textSize">@dimen/text_category_size</item>
         <item name="android:textAppearance">@style/StyleTitle14</item>
@@ -15,8 +15,18 @@
         <item name="android:paddingHorizontal">@dimen/padding_bottom</item>
     </style>
 
-    <style name="StyleHeadlineText" parent="StyleTitle14">
+    <style name="StyleHeadlineCardView" parent="StyleTitle14">
+        <item name="android:fontFamily">@font/abril_regular</item>
         <item name="android:textColor">@color/headline_color</item>
+        <item name="android:textSize">@dimen/main_indent</item>
+        <item name="android:textAppearance">@style/StyleTitle14</item>
+        <item name="android:paddingVertical">@dimen/padding_bottom</item>
+        <item name="android:paddingHorizontal">@dimen/padding_bottom</item>
+    </style>
+
+    <style name="StyleHeadlineText" parent="StyleTitle14">
+        <item name="android:fontFamily">@font/montserrat_bold</item>
+        <item name="android:textColor">@color/card_text_opacity</item>
         <item name="android:textSize">@dimen/main_indent</item>
         <item name="android:textAppearance">@style/StyleTitle14</item>
         <item name="android:paddingVertical">@dimen/main_half</item>
@@ -24,7 +34,7 @@
     </style>
 
     <style name="StyleDescriptionText" parent="TextAppearance.AppCompat">
-        <item name="android:fontFamily">@font/montserrat_medium</item>
+        <item name="android:fontFamily">@font/montserrat_semi_bold</item>
         <item name="android:paddingBottom">@dimen/padding_bottom</item>
         <item name="android:paddingHorizontal">@dimen/main_half</item>
         <item name="android:textColor">@color/card_text_opacity</item>

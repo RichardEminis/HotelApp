@@ -1,6 +1,11 @@
 package com.example.hotelapp.ui.hotel
 
 import android.annotation.SuppressLint
+import android.content.Context
+import android.content.Intent
+import android.net.ConnectivityManager
+import android.net.NetworkCapabilities
+import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -15,6 +20,10 @@ import com.example.hotelapp.databinding.FragmentHotelBinding
 import com.example.hotelapp.ui.hotelsList.HotelsListFragment
 import com.example.hotelapp.utils.ARG_HOTEL_ID
 import com.example.hotelapp.utils.HOTEL_DETAIL_URL
+import com.example.hotelapp.utils.HOTEL_MAP_URL
+import com.example.hotelapp.utils.NO_NETWORK
+import com.example.hotelapp.utils.RETRY
+import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -38,7 +47,11 @@ class HotelFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         hotelId = arguments?.getInt(ARG_HOTEL_ID) ?: 0
 
-        viewModel.loadHotel(hotelId)
+        if (isInternetAvailable()) {
+            viewModel.loadHotel(hotelId)
+        } else {
+            showNoInternetSnackBar()
+        }
 
         initUI()
     }
@@ -55,12 +68,14 @@ class HotelFragment : Fragment() {
                     displaySuitesAvailability(suites)
                 }
 
-                item.hotel?.image?.let { imageUrl ->
-                    Glide.with(this)
-                        .load(HOTEL_DETAIL_URL + imageUrl)
-                        .placeholder(R.drawable.img_placeholder)
-                        .error(R.drawable.img_error)
-                        .into(binding.hotelImage)
+                Glide.with(this)
+                    .load(item.hotel?.image?.let { HOTEL_DETAIL_URL + it } ?: R.drawable.img_error)
+                    .placeholder(R.drawable.img_placeholder)
+                    .error(R.drawable.img_error)
+                    .into(binding.hotelImage)
+
+                binding.btnShowOnMap.setOnClickListener {
+                    showHotelOnMap(item.hotel?.latitude, item.hotel?.longitude)
                 }
 
                 binding.btnBack.setOnClickListener {
@@ -93,5 +108,31 @@ class HotelFragment : Fragment() {
                 binding.linearLayoutSuites.addView(textView)
             }
         }
+    }
+
+    private fun isInternetAvailable(): Boolean {
+        val connectivityManager =
+            requireContext().getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+        val network = connectivityManager.activeNetwork ?: return false
+        val capabilities = connectivityManager.getNetworkCapabilities(network) ?: return false
+        return capabilities.hasCapability(NetworkCapabilities.NET_CAPABILITY_INTERNET)
+    }
+
+    private fun showNoInternetSnackBar() {
+        Snackbar.make(binding.root, NO_NETWORK, Snackbar.LENGTH_INDEFINITE)
+            .setAction(RETRY) {
+                if (isInternetAvailable()) {
+                    viewModel.loadHotel(hotelId)
+                } else {
+                    showNoInternetSnackBar()
+                }
+            }
+            .show()
+    }
+
+    private fun showHotelOnMap(hotelLatitude: Double?, hotelLongitude: Double?) {
+        val uri = Uri.parse("$HOTEL_MAP_URL$hotelLatitude,$hotelLongitude")
+        val browserIntent = Intent(Intent.ACTION_VIEW, uri)
+        startActivity(browserIntent)
     }
 }

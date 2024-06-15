@@ -1,5 +1,8 @@
 package com.example.hotelapp.ui.hotelsList
 
+import android.content.Context
+import android.net.ConnectivityManager
+import android.net.NetworkCapabilities
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -16,6 +19,7 @@ import com.example.hotelapp.R
 import com.example.hotelapp.databinding.FragmentHotelsListBinding
 import com.example.hotelapp.ui.hotel.HotelFragment
 import com.example.hotelapp.utils.ARG_HOTEL_ID
+import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -44,8 +48,11 @@ class HotelsListFragment : Fragment() {
         initRecycler()
         setupSpinner()
 
-
-        viewModel.loadHotels()
+        if (isInternetAvailable()) {
+            viewModel.loadHotels()
+        } else {
+            showNoInternetSnackbar()
+        }
 
         viewModel.hotelsList.observe(viewLifecycleOwner) { hotelsListState ->
             adapter.dataSet = hotelsListState.hotels
@@ -87,7 +94,12 @@ class HotelsListFragment : Fragment() {
         }
 
         spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-            override fun onItemSelected(parent: AdapterView<*>, view: View?, position: Int, id: Long) {
+            override fun onItemSelected(
+                parent: AdapterView<*>,
+                view: View?,
+                position: Int,
+                id: Long
+            ) {
                 when (position) {
                     0 -> viewModel.loadHotels()
                     1 -> viewModel.sortHotelsByDistance()
@@ -97,5 +109,25 @@ class HotelsListFragment : Fragment() {
 
             override fun onNothingSelected(parent: AdapterView<*>) {}
         }
+    }
+
+    private fun isInternetAvailable(): Boolean {
+        val connectivityManager =
+            requireContext().getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+        val network = connectivityManager.activeNetwork ?: return false
+        val capabilities = connectivityManager.getNetworkCapabilities(network) ?: return false
+        return capabilities.hasCapability(NetworkCapabilities.NET_CAPABILITY_INTERNET)
+    }
+
+    private fun showNoInternetSnackbar() {
+        Snackbar.make(binding.root, "No network connection", Snackbar.LENGTH_INDEFINITE)
+            .setAction("Retry") {
+                if (isInternetAvailable()) {
+                    viewModel.loadHotels()
+                } else {
+                    showNoInternetSnackbar()
+                }
+            }
+            .show()
     }
 }
