@@ -54,7 +54,7 @@
             android:orientation="horizontal">
 
             <TextView
-                style="@style/StyleDescriptionText"
+                style="@style/StyleBoldDescriptionText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/address" />
@@ -75,7 +75,7 @@
             android:orientation="horizontal">
 
             <TextView
-                style="@style/StyleDescriptionText"
+                style="@style/StyleBoldDescriptionText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/distance_to_city_center" />
@@ -95,7 +95,7 @@
             android:orientation="horizontal">
 
             <TextView
-                style="@style/StyleDescriptionText"
+                style="@style/StyleBoldDescriptionText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/available_rooms" />

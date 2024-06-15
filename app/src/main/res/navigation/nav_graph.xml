@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/hotelsListFragment">
+
+    <fragment
+        android:id="@+id/hotelFragment"
+        android:name="com.example.hotelapp.ui.hotel.HotelFragment"
+        android:label="HotelFragment"
+        tools:layout="@layout/fragment_hotel">
+        <argument
+            android:name="hotelId"
+            app:argType="integer" />
+        <action
+            android:id="@+id/action_hotelFragment_to_hotelsListFragment"
+            app:destination="@id/hotelsListFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/hotelsListFragment"
+        android:name="com.example.hotelapp.ui.hotelsList.HotelsListFragment"
+        android:label="HotelsListFragment"
+        tools:layout="@layout/fragment_hotels_list">
+        <action
+            android:id="@+id/action_hotelsListFragment_to_hotelFragment"
+            app:destination="@id/hotelFragment" />
+    </fragment>
+</navigation>

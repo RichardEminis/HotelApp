@@ -8,7 +8,7 @@
     <string name="suites_availability">suites availability:</string>
     <string name="distance_to_city_center">Distance to city center:</string>
     <string name="stars">stars:</string>
-    <string name="show_hotel_on_map_text">Show hotel on map</string>
+    <string name="show_hotel_on_map_text">Show hotel on Google Map</string>
     <string-array name="filter_options">
         <item>Default</item>
         <item>sort by distance from city center</item>
