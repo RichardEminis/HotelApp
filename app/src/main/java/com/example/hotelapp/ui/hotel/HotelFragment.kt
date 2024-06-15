@@ -20,6 +20,9 @@ import com.example.hotelapp.databinding.FragmentHotelBinding
 import com.example.hotelapp.ui.hotelsList.HotelsListFragment
 import com.example.hotelapp.utils.ARG_HOTEL_ID
 import com.example.hotelapp.utils.HOTEL_DETAIL_URL
+import com.example.hotelapp.utils.HOTEL_MAP_URL
+import com.example.hotelapp.utils.NO_NETWORK
+import com.example.hotelapp.utils.RETRY
 import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -47,7 +50,7 @@ class HotelFragment : Fragment() {
         if (isInternetAvailable()) {
             viewModel.loadHotel(hotelId)
         } else {
-            showNoInternetSnackbar()
+            showNoInternetSnackBar()
         }
 
         initUI()
@@ -71,17 +74,9 @@ class HotelFragment : Fragment() {
                     .error(R.drawable.img_error)
                     .into(binding.hotelImage)
 
-                val hotelLatitude = item.hotel?.latitude
-                val hotelLongitude = item.hotel?.longitude
-
                 binding.btnShowOnMap.setOnClickListener {
-                    if (hotelLatitude != null) {
-                        if (hotelLongitude != null) {
-                            showHotelOnMap(hotelLatitude, hotelLongitude)
-                        }
-                    }
+                    showHotelOnMap(item.hotel?.latitude, item.hotel?.longitude)
                 }
-
 
                 binding.btnBack.setOnClickListener {
                     parentFragmentManager.beginTransaction()
@@ -123,21 +118,20 @@ class HotelFragment : Fragment() {
         return capabilities.hasCapability(NetworkCapabilities.NET_CAPABILITY_INTERNET)
     }
 
-    private fun showNoInternetSnackbar() {
-        Snackbar.make(binding.root, "No network connection", Snackbar.LENGTH_INDEFINITE)
-            .setAction("Retry") {
+    private fun showNoInternetSnackBar() {
+        Snackbar.make(binding.root, NO_NETWORK, Snackbar.LENGTH_INDEFINITE)
+            .setAction(RETRY) {
                 if (isInternetAvailable()) {
                     viewModel.loadHotel(hotelId)
                 } else {
-                    showNoInternetSnackbar()
+                    showNoInternetSnackBar()
                 }
             }
             .show()
     }
 
-    private fun showHotelOnMap(hotelLatitude: Double, hotelLongitude: Double ) {
-        val uri =
-            Uri.parse("https://www.google.com/maps/search/?api=1&query=$hotelLatitude,$hotelLongitude")
+    private fun showHotelOnMap(hotelLatitude: Double?, hotelLongitude: Double?) {
+        val uri = Uri.parse("$HOTEL_MAP_URL$hotelLatitude,$hotelLongitude")
         val browserIntent = Intent(Intent.ACTION_VIEW, uri)
         startActivity(browserIntent)
     }

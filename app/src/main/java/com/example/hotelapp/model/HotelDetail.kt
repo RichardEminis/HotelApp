@@ -12,6 +12,6 @@ data class HotelDetail(
     val distance: Float,
     @SerialName("suites_availability") val suitesAvailability: String? = null,
     val image: String? = null,
-    val latitude: Double? = null,
-    val longitude: Double? = null,
+    @SerialName("lat")val latitude: Double? = null,
+    @SerialName("lon")val longitude: Double? = null,
 )
