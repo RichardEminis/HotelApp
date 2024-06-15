@@ -15,7 +15,11 @@
             app:argType="integer" />
         <action
             android:id="@+id/action_hotelFragment_to_hotelsListFragment"
-            app:destination="@id/hotelsListFragment" />
+            app:destination="@id/hotelsListFragment"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out"
+            app:popEnterAnim="@android:anim/fade_in"
+            app:popExitAnim="@android:anim/fade_out" />
     </fragment>
     <fragment
         android:id="@+id/hotelsListFragment"
@@ -24,6 +28,10 @@
         tools:layout="@layout/fragment_hotels_list">
         <action
             android:id="@+id/action_hotelsListFragment_to_hotelFragment"
-            app:destination="@id/hotelFragment" />
+            app:destination="@id/hotelFragment"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out"
+            app:popEnterAnim="@android:anim/fade_in"
+            app:popExitAnim="@android:anim/fade_out" />
     </fragment>
 </navigation>
