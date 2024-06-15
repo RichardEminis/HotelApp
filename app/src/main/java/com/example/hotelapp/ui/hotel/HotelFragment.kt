@@ -2,8 +2,10 @@ package com.example.hotelapp.ui.hotel
 
 import android.annotation.SuppressLint
 import android.content.Context
+import android.content.Intent
 import android.net.ConnectivityManager
 import android.net.NetworkCapabilities
+import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -69,6 +71,18 @@ class HotelFragment : Fragment() {
                     .error(R.drawable.img_error)
                     .into(binding.hotelImage)
 
+                val hotelLatitude = item.hotel?.latitude
+                val hotelLongitude = item.hotel?.longitude
+
+                binding.btnShowOnMap.setOnClickListener {
+                    if (hotelLatitude != null) {
+                        if (hotelLongitude != null) {
+                            showHotelOnMap(hotelLatitude, hotelLongitude)
+                        }
+                    }
+                }
+
+
                 binding.btnBack.setOnClickListener {
                     parentFragmentManager.beginTransaction()
                         .replace(R.id.mainContainer, HotelsListFragment())
@@ -119,5 +133,12 @@ class HotelFragment : Fragment() {
                 }
             }
             .show()
+    }
+
+    private fun showHotelOnMap(hotelLatitude: Double, hotelLongitude: Double ) {
+        val uri =
+            Uri.parse("https://www.google.com/maps/search/?api=1&query=$hotelLatitude,$hotelLongitude")
+        val browserIntent = Intent(Intent.ACTION_VIEW, uri)
+        startActivity(browserIntent)
     }
 }
