@@ -58,13 +58,11 @@ class HotelsListFragment : Fragment() {
     }
 
     private fun openHotelById(hotelId: Int) {
-        viewModel.getHotelById(hotelId)?.let {
-            findNavController().navigate(
-                HotelsListFragmentDirections.actionHotelsListFragmentToHotelFragment(
-                    hotelId
-                )
+        findNavController().navigate(
+            HotelsListFragmentDirections.actionHotelsListFragmentToHotelFragment(
+                hotelId
             )
-        }
+        )
     }
 
     private fun initRecycler() {

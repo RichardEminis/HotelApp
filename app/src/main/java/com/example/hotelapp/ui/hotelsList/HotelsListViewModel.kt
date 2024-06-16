@@ -33,10 +33,6 @@ class HotelsListViewModel @Inject constructor(private val hotelRepository: Hotel
         }
     }
 
-    fun getHotelById(hotelId: Int): Hotel? {
-        return _hotelsList.value?.hotels?.find { it.id == hotelId }
-    }
-
     fun sortHotelsByDistance() {
         val sortedHotels = _hotelsList.value?.hotels?.sortedBy { it.distance }
         _hotelsList.value = sortedHotels?.let { _hotelsList.value?.copy(hotels = it) }
