@@ -1,20 +1,13 @@
 package com.example.hotelapp.ui.hotelsList
 
 import android.annotation.SuppressLint
-import android.content.Context
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
-import android.widget.RatingBar
-import android.widget.TextView
-import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.hotelapp.R
 import com.example.hotelapp.databinding.ItemHotelBinding
 import com.example.hotelapp.model.Hotel
-import javax.inject.Inject
 
 class HotelsListAdapter(
     private var itemClickListener: OnItemClickListener? = null,

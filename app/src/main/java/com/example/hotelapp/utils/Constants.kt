@@ -7,3 +7,5 @@ const val RETRY = "Retry"
 const val NO_NETWORK = "No network connection"
 const val MAIN_INDENT = 16
 const val MAIN_HALF_INDENT = 8
+const val ERROR_TAG = "HotelsListViewModel"
+const val ERROR_MESSAGE = "Error loading hotels"

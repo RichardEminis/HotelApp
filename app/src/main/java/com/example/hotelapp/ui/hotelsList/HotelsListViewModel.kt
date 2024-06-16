@@ -7,6 +7,8 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.hotelapp.model.Hotel
 import com.example.hotelapp.repository.HotelRepository
+import com.example.hotelapp.utils.ERROR_MESSAGE
+import com.example.hotelapp.utils.ERROR_TAG
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -28,7 +30,7 @@ class HotelsListViewModel @Inject constructor(private val hotelRepository: Hotel
                 val hotels = hotelRepository.getHotels()
                 _hotelsList.value = hotelsList.value?.copy(hotels = hotels)
             } catch (e: Exception) {
-                Log.e("HotelsListViewModel", "Error loading hotels", e)
+                Log.e(ERROR_TAG, ERROR_MESSAGE, e)
             }
         }
     }

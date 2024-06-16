@@ -2,11 +2,7 @@ package com.example.hotelapp.ui
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import androidx.fragment.app.add
-import androidx.fragment.app.commit
-import com.example.hotelapp.R
 import com.example.hotelapp.databinding.ActivityMainBinding
-import com.example.hotelapp.ui.hotelsList.HotelsListFragment
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
