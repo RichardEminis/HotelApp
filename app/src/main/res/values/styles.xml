@@ -1,48 +1,46 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <style name="StyleTitle14" parent="TextAppearance.AppCompat">
+    <style name="BaseTextStyle" parent="TextAppearance.AppCompat">
         <item name="android:textAllCaps">true</item>
-        <item name="cardCornerRadius">@dimen/main_half</item>
-    </style>
-
-    <style name="StyleHeadline" parent="StyleTitle14">
-        <item name="android:fontFamily">@font/abril_regular</item>
-        <item name="android:textColor">@color/headline_color</item>
-        <item name="android:textSize">@dimen/text_category_size</item>
-        <item name="android:textAppearance">@style/StyleTitle14</item>
         <item name="android:paddingVertical">@dimen/padding_bottom</item>
         <item name="android:paddingHorizontal">@dimen/padding_bottom</item>
     </style>
 
-    <style name="StyleHeadlineCardView" parent="StyleTitle14">
-        <item name="android:fontFamily">@font/abril_regular</item>
-        <item name="android:textColor">@color/headline_color</item>
-        <item name="android:textSize">@dimen/main_indent</item>
-        <item name="android:textAppearance">@style/StyleTitle14</item>
-        <item name="android:paddingVertical">@dimen/padding_bottom</item>
-        <item name="android:paddingHorizontal">@dimen/padding_bottom</item>
-    </style>
-
-    <style name="StyleHeadlineText" parent="StyleTitle14">
-        <item name="android:fontFamily">@font/montserrat_bold</item>
-        <item name="android:textColor">@color/card_text_opacity</item>
-        <item name="android:textSize">@dimen/main_indent</item>
-        <item name="android:textAppearance">@style/StyleTitle14</item>
-        <item name="android:paddingVertical">@dimen/main_half</item>
-        <item name="android:paddingHorizontal">@dimen/main_half</item>
-    </style>
-
-    <style name="StyleDescriptionText" parent="TextAppearance.AppCompat">
-        <item name="android:fontFamily">@font/montserrat_semi_bold</item>
+    <style name="BaseStyleDescription" parent="TextAppearance.AppCompat">
         <item name="android:paddingBottom">@dimen/padding_bottom</item>
         <item name="android:paddingHorizontal">@dimen/main_half</item>
         <item name="android:textColor">@color/card_text_opacity</item>
     </style>
 
-    <style name="RippleEffect" parent="TextAppearance.AppCompat">
-        <item name="android:clickable">true</item>
-        <item name="android:foreground">?attr/selectableItemBackground</item>
+    <style name="StyleHeadline" parent="BaseTextStyle">
+        <item name="android:fontFamily">@font/abril_regular</item>
+        <item name="android:textColor">@color/headline_color</item>
+        <item name="android:textSize">@dimen/text_category_size</item>
+        <item name="cardCornerRadius">@dimen/main_half</item>
+    </style>
+
+    <style name="StyleHeadlineCardView" parent="BaseTextStyle">
+        <item name="android:fontFamily">@font/abril_regular</item>
+        <item name="android:textColor">@color/headline_color</item>
+        <item name="android:textSize">@dimen/main_indent</item>
+        <item name="cardCornerRadius">@dimen/main_half</item>
+    </style>
+
+    <style name="StyleHeadlineText" parent="BaseTextStyle">
+        <item name="android:fontFamily">@font/montserrat_bold</item>
+        <item name="android:textColor">@color/card_text_opacity</item>
+        <item name="android:textSize">@dimen/main_indent</item>
+        <item name="android:paddingVertical">@dimen/main_half</item>
+        <item name="android:paddingHorizontal">@dimen/main_half</item>
+    </style>
+
+    <style name="StyleDescriptionText" parent="BaseStyleDescription">
+        <item name="android:fontFamily">@font/montserrat_semi_bold</item>
+    </style>
+
+    <style name="StyleBoldDescriptionText" parent="BaseStyleDescription">
+        <item name="android:fontFamily">@font/montserrat_bold</item>
     </style>
 
 </resources>

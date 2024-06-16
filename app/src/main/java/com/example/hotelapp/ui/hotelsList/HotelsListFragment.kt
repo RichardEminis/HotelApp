@@ -9,16 +9,14 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
-import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.add
-import androidx.fragment.app.commit
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.example.hotelapp.R
 import com.example.hotelapp.databinding.FragmentHotelsListBinding
-import com.example.hotelapp.ui.hotel.HotelFragment
-import com.example.hotelapp.utils.ARG_HOTEL_ID
+import com.example.hotelapp.utils.NO_NETWORK
+import com.example.hotelapp.utils.RETRY
 import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -60,13 +58,11 @@ class HotelsListFragment : Fragment() {
     }
 
     private fun openHotelById(hotelId: Int) {
-        viewModel.getHotelById(hotelId)?.let {
-            val bundle = bundleOf(ARG_HOTEL_ID to hotelId)
-            parentFragmentManager.commit {
-                setReorderingAllowed(true)
-                add<HotelFragment>(R.id.mainContainer, args = bundle)
-            }
-        }
+        findNavController().navigate(
+            HotelsListFragmentDirections.actionHotelsListFragmentToHotelFragment(
+                hotelId
+            )
+        )
     }
 
     private fun initRecycler() {
@@ -120,8 +116,8 @@ class HotelsListFragment : Fragment() {
     }
 
     private fun showNoInternetSnackbar() {
-        Snackbar.make(binding.root, "No network connection", Snackbar.LENGTH_INDEFINITE)
-            .setAction("Retry") {
+        Snackbar.make(binding.root, NO_NETWORK, Snackbar.LENGTH_INDEFINITE)
+            .setAction(RETRY) {
                 if (isInternetAvailable()) {
                     viewModel.loadHotels()
                 } else {
