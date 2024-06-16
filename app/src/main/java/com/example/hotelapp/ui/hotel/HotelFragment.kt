@@ -12,6 +12,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.LinearLayout
 import android.widget.TextView
+import androidx.activity.addCallback
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
@@ -82,6 +83,10 @@ class HotelFragment : Fragment() {
 
                 binding.btnBack.setOnClickListener {
                     findNavController().navigate(HotelFragmentDirections.actionHotelFragmentToHotelsListFragment())
+                }
+
+                requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner) {
+                    findNavController().navigateUp()
                 }
             }
         }
