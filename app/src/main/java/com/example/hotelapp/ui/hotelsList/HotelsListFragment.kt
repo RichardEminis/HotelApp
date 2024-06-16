@@ -49,7 +49,7 @@ class HotelsListFragment : Fragment() {
         if (isInternetAvailable()) {
             viewModel.loadHotels()
         } else {
-            showNoInternetSnackbar()
+            showNoInternetSnackBar()
         }
 
         viewModel.hotelsList.observe(viewLifecycleOwner) { hotelsListState ->
@@ -115,13 +115,13 @@ class HotelsListFragment : Fragment() {
         return capabilities.hasCapability(NetworkCapabilities.NET_CAPABILITY_INTERNET)
     }
 
-    private fun showNoInternetSnackbar() {
+    private fun showNoInternetSnackBar() {
         Snackbar.make(binding.root, NO_NETWORK, Snackbar.LENGTH_INDEFINITE)
             .setAction(RETRY) {
                 if (isInternetAvailable()) {
                     viewModel.loadHotels()
                 } else {
-                    showNoInternetSnackbar()
+                    showNoInternetSnackBar()
                 }
             }
             .show()
